@@ -12,7 +12,7 @@ body {
           transform: translate(-50%, -50%);
 }
 
-.line {
+.line, .titles {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -20,12 +20,20 @@ body {
   border-bottom: 1px solid #121212;
 }
 
-.cell {
+.titles {
+  background-color: #95f8eb;
+  border-top: 1px solid #121212;
+}
+
+.cell, .title {
   min-width: 300px;
-  min-height: 40px;
   text-align: center;
   padding: 5px 10px;
   margin: 0 3px;
+}
+
+.cell {
+  min-height: 40px;
   cursor: pointer;
 }
 

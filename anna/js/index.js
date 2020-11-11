@@ -149,32 +149,34 @@ const DnD = {
     start: (event) => {
       const $item = event.target
       setTimeout(() => {
-        if($item.style) $item.style.display = 'none'
+        if ($item.style) $item.style.display = 'none'
       }, 0)
     },
     end: event => {
       const $item = event.target //? блок, который мы переместили
+      if ($item.style) $item.style.display = 'block'
+
       const { $oldItem } = store //? блок, который находился в ячейке, в которую мы переместили новый блок
-      const $newCell = $oldItem.parentElement //? ячейка, из которой мы взяли блок
-      const $oldCell = $item.parentElement //? ячейка, в которую мы переместили блок
+      if ($oldItem) {
+        const $newCell = $oldItem.parentElement //? ячейка, из которой мы взяли блок
+        const $oldCell = $item.parentElement //? ячейка, в которую мы переместили блок
 
-      const oldCol = $oldCell.dataset.col
-      const newCol = $newCell.dataset.col
+        const oldCol = $oldCell.dataset.col
+        const newCol = $newCell.dataset.col
 
-      if($item.style) $item.style.display = 'block'
+        if (oldCol === newCol && isNotSuccess($item)) {
+          $newCell.append($item)
+          $oldCell.append($oldItem)
 
-      if (oldCol === newCol && isNotSuccess($item)) {
-        $newCell.append($item)
-        $oldCell.append($oldItem)
+          const $newLine = $newCell.parentElement
+          const $oldLine = $oldCell.parentElement
 
-        const $newLine = $newCell.parentElement
-        const $oldLine = $oldCell.parentElement
+          const newLineId = getId($newLine.querySelectorAll('.item'))
+          const oldLineId = getId($oldLine.querySelectorAll('.item'))
 
-        const newLineId = getId($newLine.querySelectorAll('.item'))
-        const oldLineId = getId($oldLine.querySelectorAll('.item'))
-
-        compareId($newLine, newLineId)
-        compareId($oldLine, oldLineId)
+          compareId($newLine, newLineId)
+          compareId($oldLine, oldLineId)
+        }
       }
     }
   },
@@ -265,7 +267,7 @@ const render = linesNumber => {
     } while (
       usedTeachers[lineIndex] === randomSubjectsIndex
       || usedSubjects.includes(randomSubjectsIndex))
-      usedSubjects.push(randomSubjectsIndex)
+    usedSubjects.push(randomSubjectsIndex)
 
     do {
       randomPositionsIndex = randomInt(linesNumber)
@@ -281,6 +283,6 @@ const render = linesNumber => {
   })
 }
 
-window.onload = function() {
+window.onload = () => {
   render(11)
 }
