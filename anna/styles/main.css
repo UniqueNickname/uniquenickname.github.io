@@ -2,6 +2,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background: #bde7ff;
 }
 
 .container {
@@ -10,6 +11,11 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  border-radius: 30px;
+  background: #bde7ff;
+  -webkit-box-shadow: 41px 41px 82px #a1c4d9, -41px -41px 82px #d9ffff;
+          box-shadow: 41px 41px 82px #a1c4d9, -41px -41px 82px #d9ffff;
+  overflow: hidden;
 }
 
 .line, .titles {
@@ -17,12 +23,14 @@ body {
   display: -ms-flexbox;
   display: flex;
   padding: 10px 0;
-  border-bottom: 1px solid #121212;
+}
+
+.line {
+  border-top: 1px solid #121212;
 }
 
 .titles {
-  background-color: #95f8eb;
-  border-top: 1px solid #121212;
+  background-color: #a8f3e9;
 }
 
 .cell, .title {
@@ -35,14 +43,15 @@ body {
 .cell {
   min-height: 40px;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .cell:hover {
-  background-color: #b7e6e9;
+  background-color: #f0faff;
 }
 
 .success {
-  background-color: #3ddc28;
+  background-color: #a8f3e9;
 }
 
 .success .cell:hover {
