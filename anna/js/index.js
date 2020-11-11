@@ -149,7 +149,7 @@ const DnD = {
     start: (event) => {
       const $item = event.target
       setTimeout(() => {
-        $item.style.display = 'none'
+        if($item.style) $item.style.display = 'none'
       }, 0)
     },
     end: event => {
@@ -161,7 +161,7 @@ const DnD = {
       const oldCol = $oldCell.dataset.col
       const newCol = $newCell.dataset.col
 
-      $item.style.display = 'block'
+      if($item.style) $item.style.display = 'block'
 
       if (oldCol === newCol && isNotSuccess($item)) {
         $newCell.append($item)
