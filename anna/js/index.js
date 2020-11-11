@@ -211,13 +211,7 @@ window.onload = () => {
     $items.forEach($item => $item.setAttribute('draggable', false))
   }
 
-  const getId = $elems => {
-    const id = []
-    $elems.forEach($elem => {
-      id.push($elem.dataset.id)
-    })
-    return id
-  }
+  const getId = $elems => [...$elems].map($el => $el.dataset.id)
 
   const randomInt = max => {
     return Math.floor(Math.random() * Math.floor(max));
