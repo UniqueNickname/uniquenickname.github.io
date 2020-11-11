@@ -143,18 +143,16 @@ const store = {}
 
 const DnD = {
   drag: {
-    over: (event) => {
+    over: event => {
       if (isNotSuccess(event.target)) event.preventDefault();
     },
     start: (event) => {
       const $item = event.target
-      if (isNotSuccess($item)) {
-        setTimeout(() => {
-          $item.style.display = 'none'
-        }, 0);
-      }
+      setTimeout(() => {
+        $item.style.display = 'none'
+      }, 0)
     },
-    end: (event) => {
+    end: event => {
       const $item = event.target //? блок, который мы переместили
       const { $oldItem } = store //? блок, который находился в ячейке, в которую мы переместили новый блок
       const $newCell = $oldItem.parentElement //? ячейка, из которой мы взяли блок
@@ -165,7 +163,7 @@ const DnD = {
 
       $item.style.display = 'block'
 
-      if (oldCol === newCol) {
+      if (oldCol === newCol && isNotSuccess($item)) {
         $newCell.append($item)
         $oldCell.append($oldItem)
 
@@ -180,7 +178,7 @@ const DnD = {
       }
     }
   },
-  drop: (event) => {
+  drop: event => {
     store.$oldItem = event.target
   }
 }
@@ -191,25 +189,34 @@ const compareId = ($line, id) => {
   if (id[0] === id[1]) {
     if (id[0] === id[2]) {
       $line.classList.add('success')
+      disableDraggable($line)
     } else {
       const currentPosition = positions.find(position => position.id == id[2]).text
       const samePositions = positions.filter(position => position.text === currentPosition)
       samePositions.forEach(position => {
-        if (position.id == id[0]) $line.classList.add('success')
+        if (position.id == id[0]) {
+          $line.classList.add('success')
+          disableDraggable($line)
+        }
       })
     }
   }
 }
 
-const getId = ($elems) => {
+const disableDraggable = $line => {
+  const $items = $line.querySelectorAll('.item')
+  $items.forEach($item => $item.setAttribute('draggable', false))
+}
+
+const getId = $elems => {
   const id = []
-  $elems.forEach(($elem) => {
+  $elems.forEach($elem => {
     id.push($elem.dataset.id)
   })
   return id
 }
 
-const randomInt = (max) => {
+const randomInt = max => {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
@@ -231,7 +238,7 @@ const createCell = ($line, { id, text }, colNumber) => {
   $item.ondragend = DnD.drag.end
 }
 
-const render = (linesNumber) => {
+const render = linesNumber => {
   const $container = document.querySelector('.container')
   const $lines = []
   for (let index = 0; index < linesNumber; index++) {
