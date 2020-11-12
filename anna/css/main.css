@@ -3,6 +3,8 @@ body {
   margin: 0;
   padding: 0;
   background: #bde7ff;
+  color: #121212;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 .container {
@@ -16,6 +18,51 @@ body {
   -webkit-box-shadow: 41px 41px 82px #a1c4d9, -41px -41px 82px #d9ffff;
           box-shadow: 41px 41px 82px #a1c4d9, -41px -41px 82px #d9ffff;
   overflow: hidden;
+}
+
+.main,
+.win {
+  text-align: center;
+  padding: 40px;
+}
+
+.main__title {
+  font-size: 30px;
+}
+
+.main__info {
+  font-size: 24px;
+  margin: 40px 0;
+}
+
+.main__button {
+  border: none;
+  background-color: transparent;
+  font-size: 30px;
+}
+
+.main__button:hover {
+  color: tomato;
+}
+
+.main__button:focus {
+  outline: none;
+  color: tomato;
+}
+
+.win__title {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.win__button {
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.puzzle,
+.win {
+  display: none;
 }
 
 .line, .titles {

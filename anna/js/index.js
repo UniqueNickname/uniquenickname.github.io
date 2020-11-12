@@ -190,19 +190,25 @@ window.onload = () => {
 
   const compareId = ($line, id) => {
     if (id[0] === id[1]) {
-      if (id[0] === id[2]) {
-        $line.classList.add('success')
-        disableDraggable($line)
-      } else {
+      if (id[0] === id[2]) success($line)
+      else {
         const currentPosition = positions.find(position => position.id == id[2]).text
         const samePositions = positions.filter(position => position.text === currentPosition)
         samePositions.forEach(position => {
-          if (position.id == id[0]) {
-            $line.classList.add('success')
-            disableDraggable($line)
-          }
+          if (position.id == id[0]) success($line)
         })
       }
+    }
+  }
+
+  const success = $line => {
+    $line.classList.add('success')
+    disableDraggable($line)
+    store.counter -= 1
+    if (!store.counter) {
+      const { $puzzle, $win } = store
+      $puzzle.style.display = 'none'
+      $win.style.display = 'block'
     }
   }
 
@@ -236,12 +242,11 @@ window.onload = () => {
   }
 
   const render = linesNumber => {
-    const $container = document.querySelector('.container')
     const $lines = []
     for (let index = 0; index < linesNumber; index++) {
       const $line = document.createElement('div');
       $line.classList.add('line')
-      $container.append($line)
+      store.$puzzle.append($line)
       $lines.push($line)
     }
     const usedTeachers = []
@@ -275,8 +280,18 @@ window.onload = () => {
       createCell($line, teachers[randomTeachersIndex], 1)
       createCell($line, subjects[randomSubjectsIndex], 2)
       createCell($line, positions[randomPositionsIndex], 3)
+      store.counter = linesNumber
     })
   }
 
-  render(11)
+  store.$main = document.querySelector('.main')
+  store.$mainButton = store.$main.querySelector('.main__button')
+  store.$puzzle = document.querySelector('.puzzle')
+  store.$win = document.querySelector('.win')
+
+  store.$mainButton.onclick = () => {
+    store.$main.style.display = 'none'
+    store.$puzzle.style.display = 'block'
+    render(11)
+  }
 }
