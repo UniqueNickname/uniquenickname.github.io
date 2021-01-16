@@ -1,0 +1,48 @@
+.profile {
+  position: absolute;
+  top: 125px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding-left: 20px;
+}
+
+.profile__info {
+  width: 306px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.profile__info-number {
+  text-decoration: underline;
+}
+
+.profile__more {
+  position: fixed;
+  left: 50%;
+  bottom: 100px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 27px;
+  border-radius: 10px;
+  width: 261px;
+  height: 50px;
+  color: #ffffff;
+  background: #f1ab23;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+}
+/*# sourceMappingURL=profile.css.map */
