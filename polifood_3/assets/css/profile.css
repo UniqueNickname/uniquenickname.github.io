@@ -8,6 +8,10 @@
 }
 
 .profile__info {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
   width: 306px;
   text-align: center;
   font-weight: 500;
