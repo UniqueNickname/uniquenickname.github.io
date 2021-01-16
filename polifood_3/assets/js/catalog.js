@@ -1,4 +1,3 @@
-// products__card-buy
 const $cartButtons = document.querySelectorAll(".products__card-buy");
 
 $cartButtons.forEach(($button) => {
