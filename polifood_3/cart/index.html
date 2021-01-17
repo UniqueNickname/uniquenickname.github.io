@@ -53,70 +53,7 @@
                 </svg>
             </div>
         </div>
-        <div class="cart">
-            <div class="cart__card">
-                <a href="../catalog/bakery-products/sandwich/index.html">
-                    <img
-                        src="../assets/img/1.84ed6aa435a20223f633bbe1315ee2d5.png"
-                        class="cart__card-img"
-                    />
-                </a>
-                <div class="cart__card-info">
-                    <div class="cart__card-title">Сэндвич</div>
-                    <div class="cart__card-price">24,0 Р</div>
-                    <div class="cart__card-counter">
-                        <div
-                            data-type="counter-minus"
-                            class="cart__card-counter-button"
-                        >
-                            <svg
-                                width="6"
-                                height="3"
-                                viewBox="0 0 6 3"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M0.320531 0.792H5.67253V2.736H0.320531V0.792Z"
-                                    fill="white"
-                                />
-                            </svg>
-                        </div>
-                        <div
-                            data-type="counter-value"
-                            class="cart__card-counter-value"
-                        >
-                            1
-                        </div>
-                        <div
-                            data-type="counter-plus"
-                            class="cart__card-counter-button"
-                        >
-                            <svg
-                                width="10"
-                                height="10"
-                                viewBox="0 0 10 10"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M3.97953 6H0.619531V4.056H3.97953V0.144H5.89953V4.056H9.37953V6H5.89953V9.912H3.97953V6Z"
-                                    fill="white"
-                                />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <a href="../profile/index.html" class="cart__place-an-order">
-                <div class="cart__place-an-order-text">
-                    Оформить заказ
-                </div>
-                <div class="cart__place-an-order-price">
-                    24,0 Р
-                </div>
-            </a>
-        </div>
+        <div class="cart"></div>
         <div class="toolbar">
             <a href="../index.html" class="toolbar__button">
                 <div class="toolbar__button-icon">
@@ -192,7 +129,10 @@
                 <div class="toolbar__button-text">Профиль</div>
             </a>
         </div>
-        <script src="../assets/js/product-counter.js"></script>
-        <script src="../assets/js/clear-cart.js"></script>
+        <script src="../assets/js/template.js"></script>
+        <script>
+            setCart();
+        </script>
+        <!-- <script src="../assets/js/clear-cart.js"></script> -->
     </body>
 </html>
