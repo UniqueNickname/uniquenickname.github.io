@@ -39,7 +39,7 @@ const detailTemplate = ({ img, name, size, price, description, id }) => `
 			<div class="detail__size">${size}</div>
 		</div>
 		<div class="detail__price">
-			<span data-type="counter-sum">${price}</span> Р
+			<span>${price}</span> Р
 		</div>
 		<div class="detail__controller">
 			<div class="detail__counter">
@@ -111,9 +111,7 @@ const cartTemplate = ({ img, name, price, counter, id }) => `
 		<div class="cart__card-info">
 			<div class="cart__card-title">${name}</div>
 			<div class="cart__card-price">
-				<span data-type="counter-sum">${
-                    parseFloat(price) * parseFloat(counter)
-                }</span> Р
+				<span>${price}</span> Р
 			</div>
 			<div class="cart__card-counter">
 				<div
