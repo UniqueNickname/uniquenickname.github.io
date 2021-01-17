@@ -338,7 +338,6 @@ const setToolbar = (pathToRoot, active) => {
     const root = document.body;
     root.insertAdjacentHTML("afterbegin", toolbarTemplate(pathToRoot, active));
     const $block = document.querySelector('[data-type="choose_building"]');
-    console.log($block);
     root.querySelector('[data-type="show_choose_building"]').addEventListener(
         "click",
         () => {
