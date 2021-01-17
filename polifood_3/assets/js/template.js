@@ -101,7 +101,7 @@ const detailTemplate = ({ img, name, size, price, description, id }) => `
 `;
 
 const cartTemplate = ({ img, name, price, counter, id }) => `
-	<div class="cart__card" data-type="cartCard" data-id="${id}">
+	<div class="cart__card" data-type="cart_card" data-id="${id}">
 		<a href="../catalog/product/index.html">
 			<img
 				src="../assets/img/${img}"
@@ -161,8 +161,12 @@ const cartTemplate = ({ img, name, price, counter, id }) => `
 	</div>
 `;
 
+const orderTemplate = (number) => `
+	<div class="profile__info">Ваш заказ<span class="profile__info-number">№ ${number}</span> готовится</div>
+`;
+
 const cartPayButtonTemplate = (price) => `
-	<a href="../profile/index.html" class="cart__place-an-order">
+	<a href="../profile/index.html" data-type="make_order" class="cart__place-an-order">
 		<div class="cart__place-an-order-text">
 			Оформить заказ
 		</div>
@@ -191,7 +195,6 @@ const changeCounterValue = (operator, $value, root, isCart) => {
     if ($cartSum && isCart) {
         const cardId = root.dataset.id;
         const data = getCartData().find((c) => c.id === cardId);
-        console.log(data);
         updateCart(data, $value);
         $cartSum.innerHTML = getSumPrice();
     }
@@ -212,9 +215,20 @@ const initCounter = (root, isCart = false) => {
     return $value;
 };
 
+const getRandomInt = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+};
+
 const getCartData = () =>
     localStorage.getItem("cart")
         ? JSON.parse(localStorage.getItem("cart"))
+        : [];
+
+const getOrdersData = () =>
+    localStorage.getItem("orders")
+        ? JSON.parse(localStorage.getItem("orders"))
         : [];
 
 const getSumPrice = () =>
@@ -236,12 +250,29 @@ const setCart = () => {
         ? template + cartPayButtonTemplate(getSumPrice())
         : template;
 
-    document.querySelectorAll('[data-type="cartCard"]').forEach(($card) => {
+    const $makeOrderButton = document.querySelector('[data-type="make_order"]');
+    if ($makeOrderButton) {
+        $makeOrderButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            const ordersData = getOrdersData();
+            ordersData.push(getRandomInt(17, 1000));
+            localStorage.setItem("orders", JSON.stringify(ordersData));
+            clearCart();
+        });
+    }
+    document.querySelectorAll('[data-type="cart_card"]').forEach(($card) => {
         const $counterValue = initCounter($card, true);
     });
 
     const $removeButton = document.querySelector(".header__clear-button");
     $removeButton.addEventListener("click", (event) => clearCart());
+};
+
+const setProfile = () => {
+    const root = document.querySelector(".profile");
+    getOrdersData().forEach((number) => {
+        root.insertAdjacentHTML("afterbegin", orderTemplate(number));
+    });
 };
 
 const updateCart = (data, $counterValue) => {
