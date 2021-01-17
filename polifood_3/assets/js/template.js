@@ -427,7 +427,6 @@ const setCart = () => {
     const $makeOrderButton = document.querySelector('[data-type="make_order"]');
     if ($makeOrderButton) {
         $makeOrderButton.addEventListener("click", (event) => {
-            event.preventDefault();
             const ordersData = getOrdersData();
             ordersData.push(getRandomInt(17, 1000));
             localStorage.setItem("orders", JSON.stringify(ordersData));
