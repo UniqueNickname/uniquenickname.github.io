@@ -5,53 +5,17 @@
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <title>Выбор корпуса | Полиfood</title>
         <link href="./assets/css/main.css" rel="stylesheet" />
-        <link href="./assets/css/choose-building.css" rel="stylesheet" />
+        <link href="./assets/css/logo.css" rel="stylesheet" />
     </head>
 
     <body>
-        <div class="choose-building__page">
-            <div class="choose-building__block">
-                <div class="choose-building__title">Выбор корпуса</div>
-                <ul class="choose-building__cards">
-                    <li class="choose-building__card">
-                        <a
-                            href="./catalog/index.html"
-                            class="choose-building__card-content"
-                        >
-                            <div class="choose-building__card-text">
-                                Главный корпус
-                            </div>
-                        </a>
-                    </li>
-                    <li class="choose-building__card">
-                        <a
-                            href="./catalog/index.html"
-                            class="choose-building__card-content"
-                        >
-                            <div class="choose-building__card-number">1</div>
-                            <div class="choose-building__card-text">Корпус</div>
-                        </a>
-                    </li>
-                    <li class="choose-building__card">
-                        <a
-                            href="./catalog/index.html"
-                            class="choose-building__card-content"
-                        >
-                            <div class="choose-building__card-number">6</div>
-                            <div class="choose-building__card-text">Корпус</div>
-                        </a>
-                    </li>
-                    <li class="choose-building__card">
-                        <a
-                            href="./catalog/index.html"
-                            class="choose-building__card-content"
-                        >
-                            <div class="choose-building__card-number">8</div>
-                            <div class="choose-building__card-text">Корпус</div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <div class="logo">Полиfood</div>
     </body>
+    <script>
+        setTimeout(() => {
+            window.location.href =
+                window.location.href.split("/").slice(0, -1).join("/") +
+                "/catalog/index.html";
+        }, 1000);
+    </script>
 </html>
